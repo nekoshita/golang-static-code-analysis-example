@@ -3,7 +3,7 @@ package main
 import "log"
 
 func main() {
-	log.Print("hello")
+	log.Print(Hoge{})
 }
 
 type Hoge struct {
