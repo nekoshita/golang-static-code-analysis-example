@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+
+echo "checking 'go vet'...."
+go vet
+
+echo "checking 'go fmt'...."
+
+if [ "$(gofmt -e -l . | wc -l)" -gt 0 ]; then
+  echo "'go fmt' failed. Target files are below."
+  gofmt -e -l .
+  exit 1
+fi
+
+echo "checking 'golint'...."
+golint -set_exit_status
+
+echo 'ok'
